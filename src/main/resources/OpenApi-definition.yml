@@ -1,0 +1,37 @@
+swagger: '2.0'
+
+#Document metadata
+info:
+  version: "0.0.1"
+  title: "Example of YAML for swagger"
+
+#URL data
+host: api.example.com
+basePath: /music
+schemes:
+  - http
+
+#Endpoints
+paths:
+  # music playlist
+  /playlist:
+    #Get a list of playlists
+    get:
+      #Query parameters
+      parameters:
+        - name: start
+          in: query
+          required: false
+          type: string
+
+  # music playlist
+  /playlist/{id}:
+    #Get a list of playlists
+    delete:
+      #Query parameters
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+
