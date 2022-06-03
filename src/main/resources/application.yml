@@ -2,7 +2,7 @@ spring:
   #Datasource configuration (database connection)
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/
+    url: jdbc:mysql://localhost:3306/crud_feature_db
     username: "root"
     password: "123"
   #JPA-Hibernate configuration
