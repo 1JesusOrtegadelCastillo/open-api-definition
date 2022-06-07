@@ -1,5 +1,6 @@
 package com.example.crudfeature.service;
 
+import com.example.crudfeature.exception.ApiRequestException;
 import com.example.crudfeature.model.Employee;
 import com.example.crudfeature.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
@@ -31,14 +32,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Long id) {
-        Optional<Employee> optional = employeeRepository.findById(id);
-        Employee employee = null;
-        if(optional.isPresent()){
-            employee = optional.get();
-        } else {
-            throw new RuntimeException(" Employee not found for id :: " + id);
+    public Employee updateEmployee(Employee employee) {
+        Optional<Employee> optional = employeeRepository.findById(employee.getId());
+        if(!optional.isPresent()){
+            throw new ApiRequestException(" Employee not found for id :: " + employee.getId());
         }
+        employeeRepository.save(employee);
         return employee;
     }
 

@@ -25,15 +25,14 @@ public class EmployeeController {
   //  return employees;
   //}
 
-  @PostMapping("/new")
+  @PostMapping
   public Employee newEmployee(@RequestBody Employee employee){
     return employeeService.newEmployee(employee);
   }
 
-  @GetMapping("/all")
+  @GetMapping
   public ResponseEntity<List<Employee>> Employee(){
-    List<Employee> employees = employeeService.getEmployees();
-    return new ResponseEntity<>(employees, HttpStatus.OK);
+    return  ResponseEntity.ok(employeeService.getEmployees());
   }
 
   @GetMapping("/{id}")
@@ -41,9 +40,9 @@ public class EmployeeController {
     return ResponseEntity.of(employeeService.getEmployeeById(id));
   }
 
-  @PutMapping("update")
-  public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee){
-
+  @PutMapping
+  public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
+    return ResponseEntity.ok(employeeService.updateEmployee(employee));
   }
 
 }
